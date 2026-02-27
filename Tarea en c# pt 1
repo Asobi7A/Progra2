@@ -1,0 +1,175 @@
+//version en c# NumerosNaturales.cs
+namespace EstructuraObjetos;
+
+
+public class NumeroNatural
+{
+    //caracteristicas
+    private int numero;
+
+    //comportamiento
+
+    //constructor 
+    public NumeroNatural()
+    {
+        numero = 0;
+    }
+    public NumeroNatural(int x)
+    {numero = x;
+        while (numero < 0){
+        Console.WriteLine("Numero " + numero + " debe ser igual o mayor que 0");
+        numero = int.Parse(Console.ReadLine());
+        }
+        
+    }
+public void setnumero(int x)
+    {
+numero = x;
+        while (numero < 0){
+        Console.WriteLine("Numero" + numero + "debe ser igual o mayor que 0");
+        numero = int.Parse(Console.ReadLine());
+        }
+    }
+
+public void mostrarvalor()
+    {
+        Console.WriteLine(numero);
+
+    }
+
+public int getValor()
+    { 
+        return numero;
+        
+    }
+    
+public bool esPrimo()
+{
+    if (numero <= 1)
+        {
+            return false;
+        } 
+        for (int i = 2; i < numero ; i++)
+        {
+            if (numero % i == 0)return false;
+        }
+        return true;
+}
+
+    public int OrdenarDigitos_Opcion1_QuickSort()
+    {
+        int size = ContarDigitos(numero);
+        int[] arr = CrearArregloDigitos(numero, size); 
+        QuickSort(arr, 0, arr.Length - 1);
+
+        return ConvertirArregloANumero(arr);
+    }
+
+    public int OrdenarDigitos_Opcion2_Conteo()
+    {  int n = numero;
+        if (n == 0) return 0;
+        int c0 = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, c8 = 0, c9 = 0;
+        while (n > 0)
+        {
+            int d = n % 10;
+            if (d == 0) c0++;
+            else if (d == 1) c1++;
+            else if (d == 2) c2++;
+            else if (d == 3) c3++;
+            else if (d == 4) c4++;
+            else if (d == 5) c5++;
+            else if (d == 6) c6++;
+            else if (d == 7) c7++;
+            else if (d == 8) c8++;
+            else c9++;
+
+            n /= 10;
+        }
+        int res = 0;
+        while (c0-- > 0) res = res * 10 + 0;
+        while (c1-- > 0) res = res * 10 + 1;
+        while (c2-- > 0) res = res * 10 + 2;
+        while (c3-- > 0) res = res * 10 + 3;
+        while (c4-- > 0) res = res * 10 + 4;
+        while (c5-- > 0) res = res * 10 + 5;
+        while (c6-- > 0) res = res * 10 + 6;
+        while (c7-- > 0) res = res * 10 + 7;
+        while (c8-- > 0) res = res * 10 + 8;
+        while (c9-- > 0) res = res * 10 + 9;
+
+        return res;
+    }
+
+    private int ContarDigitos(int n)
+    {
+        if (n == 0) return 1;
+        int count = 0;
+        while (n > 0) { n /= 10; count++; }
+        return count;
+    }
+
+    private int[] CrearArregloDigitos(int n, int size)
+    {
+        int[] arr = new int[size];
+        int i = 0;
+        if (n == 0)
+        {
+            arr[0] = 0;
+            return arr;
+        }
+
+        while (n > 0 && i < size)
+        {
+            arr[i] = n % 10;
+            n /= 10;
+            i++;
+        }
+        return arr;
+    }
+
+    private int ConvertirArregloANumero(int[] arr)
+    {
+        int res = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            res = res * 10 + arr[i];
+        }
+        return res;
+    }
+
+    private void Swap(ref int a, ref int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    private int Particionar(int[] arr, int inicio, int final)
+    {
+        int pivote = arr[final];
+        int i = inicio - 1;
+
+        for (int j = inicio; j < final; j++)
+        {
+            if (arr[j] <= pivote)
+            {
+                i++;
+                Swap(ref arr[i], ref arr[j]);
+            }
+        }
+
+        Swap(ref arr[i + 1], ref arr[final]);
+        return i + 1;
+    }
+
+    private void QuickSort(int[] arr, int inicio, int final)
+    {
+        if (inicio < final)
+        {
+            int p = Particionar(arr, inicio, final);
+            QuickSort(arr, inicio, p - 1);
+            QuickSort(arr, p + 1, final);
+        }
+    }
+}
+
