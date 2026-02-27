@@ -1,0 +1,120 @@
+//version c++
+#include <iostream>
+using namespace std;
+
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void createArr(int*& arr, int size, int num){
+    int copy = num;
+    int *array = new int [size];
+
+    int i = 0;
+    while (copy >= 1){
+        int x = copy % 10;
+        array[i] = x;
+        copy /= 10;
+        i++;
+    }
+
+    arr = array;
+}
+
+int partir ( int * arr, int inicio, int final){
+    int pivote = arr[final];
+    int i = inicio -1;
+    for (int j = inicio; j < final; j++){
+        if (arr[j] <= pivote){
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i+1], arr[final]);
+    return i + 1;
+}
+
+void quicksort(int *arr, int inicio, int final){
+if (inicio < final){
+    int p = partir(arr, inicio, final);
+    quicksort(arr, inicio, p - 1);
+    quicksort(arr, p+1, final);
+}
+}
+
+int convertirNum(int *arr, int size){
+    int num = 0;
+    for (int i = 0; i<size; i++){
+        num = (num * 10) + arr[i];
+    }
+    return num;
+}
+int opcion2(int n) {
+    int c0=0,c1=0,c2=0,c3=0,c4=0,c5=0,c6=0,c7=0,c8=0,c9=0;
+    int copy = n;
+
+    while (copy > 0) {
+        int d = copy % 10;
+        if (d == 0) c0++;
+        else if (d == 1) c1++;
+        else if (d == 2) c2++;
+        else if (d == 3) c3++;
+        else if (d == 4) c4++;
+        else if (d == 5) c5++;
+        else if (d == 6) c6++;
+        else if (d == 7) c7++;
+        else if (d == 8) c8++;
+        else c9++;
+        copy /= 10;
+    }
+
+    int res = 0;
+
+    while (c0-- > 0) res = res * 10 + 0;
+    while (c1-- > 0) res = res * 10 + 1;
+    while (c2-- > 0) res = res * 10 + 2;
+    while (c3-- > 0) res = res * 10 + 3;
+    while (c4-- > 0) res = res * 10 + 4;
+    while (c5-- > 0) res = res * 10 + 5;
+    while (c6-- > 0) res = res * 10 + 6;
+    while (c7-- > 0) res = res * 10 + 7;
+    while (c8-- > 0) res = res * 10 + 8;
+    while (c9-- > 0) res = res * 10 + 9;
+
+    return res;
+}
+
+int main (){
+    int n; 
+    cin >> n;
+    int size = -1;
+    int copy = n;
+    int n2 = n;
+    int* arr = nullptr;
+
+    if (n <= 0){
+        cout<<"error"<<endl;
+    } else if (n < 10 && n > 0){
+        size = 1;
+    } else {
+        size = 0;
+        while (copy >= 1){
+            copy/=10;
+            size++;
+        }
+    }
+    createArr(arr, size, n);
+    quicksort(arr, 0, size - 1);
+
+    n = convertirNum(arr, size);
+    cout<<"Opcion 1:"<<n<<endl;
+    cout<<"Opcion 2:"<<opcion2(n2)<<endl;;
+
+
+
+
+    delete[] arr;
+    return 0;
+}
