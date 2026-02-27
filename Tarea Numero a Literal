@@ -1,0 +1,237 @@
+#include <iostream>
+using namespace std;
+
+int main (){
+int numero;
+cin>>numero;
+int pos = 0;
+int pos_a = 0;
+string almacenado[4]={"","","",""};
+int copia = numero;
+
+while (numero > 0){
+int digito = numero % 10;
+cout<<digito<<endl;;
+
+
+
+
+if(pos == 0){
+    string digitos[9] = {"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"};
+    almacenado[pos_a] = digitos[digito-1];
+    /*
+    if (digito == 1){
+        almacenado[pos_a]="uno";
+    }
+        if (digito == 2){
+        almacenado[pos_a]="dos";
+    }
+        if (digito == 3){
+        almacenado[pos_a]="tres";
+    }
+        if (digito == 4){
+        almacenado[pos_a]="cuatro";
+    }
+        if (digito == 5){
+        almacenado[pos_a]="cinco";
+    }
+        if (digito == 6){
+        almacenado[pos_a]="seis";
+    }
+        if (digito == 7){
+        almacenado[pos_a]="siete";
+    }
+        if (digito == 8){
+        almacenado[pos_a]="ocho";
+    }
+        if (digito == 9){
+        almacenado[pos_a]="nueve";
+    }*/
+
+}
+
+if (pos == 1) {
+    int u = copia % 10;  // unidad original
+
+    
+    if (digito == 1) {
+        almacenado[0] = "";  // borrar unidad porque se fusiona
+
+        string especiales[10] = {
+            "diez", "once", "doce", "trece", "catorce",
+            "quince", "dieciseis", "diecisiete",
+            "dieciocho", "diecinueve"
+        };
+
+        almacenado[pos_a] = especiales[u];
+    }
+
+    // 20–29
+    else if (digito == 2) {
+        if (u == 0) {
+            almacenado[pos_a] = "veinte";
+        } else {
+            almacenado[0] = ""; // se fusiona
+            string veinti[10] = {
+                "", "veintiuno", "veintidos", "veintitres",
+                "veinticuatro", "veinticinco", "veintiseis",
+                "veintisiete", "veintiocho", "veintinueve"
+            };
+            almacenado[pos_a] = veinti[u];
+        }
+    }
+
+    // 30–90
+    else {
+        string decenas[10] = {
+            "", "", "", "treinta", "cuarenta", "cincuenta",
+            "sesenta", "setenta", "ochenta", "noventa"
+        };
+
+        if (digito != 0) {
+            if (u == 0) {
+                almacenado[pos_a] = decenas[digito];      
+            } else {
+                almacenado[pos_a] = decenas[digito] + " y"; 
+            }
+        }
+    }
+/*if(copia == 0){
+    almacenado[1] = "";
+    almacenado[0] = "cero";
+    break;
+}
+
+if(copia == 11){
+    almacenado[1] = "once";
+    almacenado[0] = "";
+    break;
+}
+
+if(copia == 12){
+    almacenado[1] = "doce";
+    almacenado[0] = "";
+    break;
+}
+if(copia == 13){
+    almacenado[1] = "trece";
+    almacenado[0] = "";
+    break;
+}
+if(copia == 14){
+    almacenado[1] = "catorce";
+    almacenado[0] = "";
+    break;
+}
+if(copia == 15){
+    almacenado[1] = "quince";
+    almacenado[0] = "";
+    break;
+}*/
+   /* if (digito == 1){
+        almacenado[pos_a]="dieci";
+    }
+        if (digito == 2){
+        almacenado[pos_a]="veinti";
+    }
+        if (digito == 3){
+        almacenado[pos_a]="treintai";
+    }
+        if (digito == 4){
+        almacenado[pos_a]="cuarentai";
+    }
+        if (digito == 5){
+        almacenado[pos_a]="cincuentai";
+    }
+        if (digito == 6){
+        almacenado[pos_a]="sesentai";
+    }
+        if (digito == 7){
+        almacenado[pos_a]="setentai";
+    }
+        if (digito == 8){
+        almacenado[pos_a]="ochentai";
+    }
+        if (digito == 9){
+        almacenado[pos_a]="noventai";
+    }*/
+}
+
+if(pos == 2){
+        string digitos[9] = {"ciento", "doscientos", "trecientos", "cuatrocientos", "quinientos", "seicientos", "setecientos", "ochocientos", "novecientos"};
+    almacenado[pos_a] = digitos[digito-1];
+    /*if (digito == 1){
+        almacenado[pos_a]="ciento";
+    }
+        if (digito == 2){
+        almacenado[pos_a]="doscientos";
+    }
+        if (digito == 3){
+        almacenado[pos_a]="trecientos";
+    }
+        if (digito == 4){
+        almacenado[pos_a]="cuatrocientos";
+    }
+        if (digito == 5){
+        almacenado[pos_a]="quinientos";
+    }
+        if (digito == 6){
+        almacenado[pos_a]="seisientos";
+    }
+        if (digito == 7){
+        almacenado[pos_a]="setecientos";
+    }
+        if (digito == 8){
+        almacenado[pos_a]="ochocientos";
+    }
+        if (digito == 9){
+        almacenado[pos_a]="novecientos";
+    }*/
+}
+
+if(pos == 3){
+        string digitos[9] = {"mil", "dosmil", "tresmil", "cuatromil", "cincomil", "seismil", "sietemil", "ochomil", "nuevemil"};
+    almacenado[pos_a] = digitos[digito-1];
+    /*if (digito == 1){
+        almacenado[pos_a]="mil";
+    }
+        if (digito == 2){
+        almacenado[pos_a]="dosmil";
+    }
+        if (digito == 3){
+        almacenado[pos_a]="tresmil";
+    }
+        if (digito == 4){
+        almacenado[pos_a]="cuatromil";
+    }
+        if (digito == 5){
+        almacenado[pos_a]="cincomil";
+    }
+        if (digito == 6){
+        almacenado[pos_a]="seismil";
+    }
+        if (digito == 7){
+        almacenado[pos_a]="sietemil";
+    }
+        if (digito == 8){
+        almacenado[pos_a]="ochomil";
+    }
+        if (digito == 9){
+        almacenado[pos_a]="nuevemil";
+    }*/
+}
+
+numero /= 10;
+pos++;
+pos_a++;
+
+}
+for (int i=3; i>=0; i--){
+    if (almacenado[i]!=""){
+cout<<almacenado[i]<<" ";
+}
+}
+
+
+    return 0;
+}
