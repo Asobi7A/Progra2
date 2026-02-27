@@ -1,0 +1,23 @@
+//program.cs
+using EstructuraObjetos;
+
+Console.WriteLine("UWU");
+string identificar = Console.ReadLine();
+Console.WriteLine("Eduardo es "+ identificar);
+NumeroNatural numero = new NumeroNatural();
+numero.mostrarvalor();
+numero.setnumero(10);
+numero.mostrarvalor();
+
+NumeroNatural numero2 = new NumeroNatural(67);
+numero2.mostrarvalor();
+
+NumeroNatural numero3 = new NumeroNatural(-5);
+numero3.mostrarvalor();
+if (numero3.esPrimo()) Console.WriteLine("Es primo");
+else Console.WriteLine("No es primo");
+Console.WriteLine(numero3.getValor());
+NumeroNatural numOrden = new NumeroNatural(530241);
+Console.WriteLine("Original: " + numOrden.getValor());
+Console.WriteLine("Opcion 1 (QuickSort): " + numOrden.OrdenarDigitos_Opcion1_QuickSort());
+Console.WriteLine("Opcion 2 (Conteo): " + numOrden.OrdenarDigitos_Opcion2_Conteo());
